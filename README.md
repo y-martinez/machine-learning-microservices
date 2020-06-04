@@ -1,4 +1,7 @@
-<include a CircleCI status badge, here>
+[![Build Status](https://circleci.com/gh/y-martinez/machine-learning-microservices.svg?style=shield)](https://app.circleci.com/pipelines/github/y-martinez/machine-learning-microservices)
+
+[![license](https://img.shields.io/github/license/y-martinez/machine-learning-microservices.svg)](https://github.com/y-martinez/machine-learning-microservices/blob/master/LICENSE)
+
 
 # Machine Learning with Microservices
 
