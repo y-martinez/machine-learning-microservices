@@ -1,1 +1,80 @@
-<paste log output from Docker prediction, here>
++ docker build . -t project-microservices-udacity
+Sending build context to Docker daemon  1.104MB
+
+Step 1/8 : FROM python:3.7.3-stretch
+ ---> 34a518642c76
+Step 2/8 : WORKDIR /app
+ ---> Using cache
+ ---> 38d01ab3b289
+Step 3/8 : COPY app.py /app/app.py
+ ---> Using cache
+ ---> e190adffa374
+Step 4/8 : COPY requirements.txt /app/requirements.txt
+ ---> Using cache
+ ---> 4dffd7f84e91
+Step 5/8 : COPY model_data/boston_housing_prediction.joblib /app/model_data/boston_housing_prediction.joblib
+ ---> Using cache
+ ---> aa244a5180f7
+Step 6/8 : RUN pip install --upgrade pip &&     pip install --trusted-host pypi.python.org -r requirements.txt
+ ---> Running in c8a5472e36ee
+Collecting pip
+  Downloading https://files.pythonhosted.org/packages/43/84/23ed6a1796480a6f1a2d38f2802901d078266bda38388954d01d3f2e821d/pip-20.1.1-py2.py3-none-any.whl (1.5MB)
+Installing collected packages: pip
+  Found existing installation: pip 19.1.1
+    Uninstalling pip-19.1.1:
+      Successfully uninstalled pip-19.1.1
+Successfully installed pip-20.1.1
+Collecting Click==7.0
+  Downloading Click-7.0-py2.py3-none-any.whl (81 kB)
+Collecting Flask==1.0.2
+  Downloading Flask-1.0.2-py2.py3-none-any.whl (91 kB)
+Collecting itsdangerous==1.1.0
+  Downloading itsdangerous-1.1.0-py2.py3-none-any.whl (16 kB)
+Collecting Jinja2==2.10.3
+  Downloading Jinja2-2.10.3-py2.py3-none-any.whl (125 kB)
+Collecting MarkupSafe==1.1.1
+  Downloading MarkupSafe-1.1.1-cp37-cp37m-manylinux1_x86_64.whl (27 kB)
+Collecting numpy==1.17.2
+  Downloading numpy-1.17.2-cp37-cp37m-manylinux1_x86_64.whl (20.3 MB)
+Collecting pandas==0.24.2
+  Downloading pandas-0.24.2-cp37-cp37m-manylinux1_x86_64.whl (10.1 MB)
+Collecting python-dateutil==2.8.0
+  Downloading python_dateutil-2.8.0-py2.py3-none-any.whl (226 kB)
+Collecting pytz==2019.3
+  Downloading pytz-2019.3-py2.py3-none-any.whl (509 kB)
+Collecting scikit-learn==0.20.3
+  Downloading scikit_learn-0.20.3-cp37-cp37m-manylinux1_x86_64.whl (5.4 MB)
+Collecting scipy==1.3.1
+  Downloading scipy-1.3.1-cp37-cp37m-manylinux1_x86_64.whl (25.2 MB)
+Collecting six==1.12.0
+  Downloading six-1.12.0-py2.py3-none-any.whl (10 kB)
+Collecting Werkzeug==0.16.0
+  Downloading Werkzeug-0.16.0-py2.py3-none-any.whl (327 kB)
+Installing collected packages: Click, itsdangerous, Werkzeug, MarkupSafe, Jinja2, Flask, numpy, six, python-dateutil, pytz, pandas, scipy, scikit-learn
+Successfully installed Click-7.0 Flask-1.0.2 Jinja2-2.10.3 MarkupSafe-1.1.1 Werkzeug-0.16.0 itsdangerous-1.1.0 numpy-1.17.2 pandas-0.24.2 python-dateutil-2.8.0 pytz-2019.3 scikit-learn-0.20.3 scipy-1.3.1 six-1.12.0
+Removing intermediate container c8a5472e36ee
+ ---> 2130a3ca71d7
+Step 7/8 : EXPOSE 80
+ ---> Running in f0dd94266947
+Removing intermediate container f0dd94266947
+ ---> 0fc0a4c666d8
+Step 8/8 : CMD [ "python", "app.py" ]
+ ---> Running in c8199f731f6a
+Removing intermediate container c8199f731f6a
+ ---> 0dc6f9e82bd5
+Successfully built 0dc6f9e82bd5
+Successfully tagged project-microservices-udacity:latest
+
++ docker images | grep project-microservices-udacity
+project-microservices-udacity   latest              0dc6f9e82bd5        Less than a second ago   1.24GB
+
++ docker run -p 5000:80 project-microservices-udacity
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 288-047-648
