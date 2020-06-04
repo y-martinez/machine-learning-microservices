@@ -13,6 +13,9 @@ kubectl run project-microservices-udacity\
     --image=$dockerpath\
     --port=80 --labels app=ml-udacity
 
+# Wait to pod status will be ready
+kubectl wait pod/project-microservices-udacity --for=condition=Ready --timeout=-1s
+
 # Step 3:
 # List kubernetes pods
 kubectl get pods
@@ -21,3 +24,6 @@ kubectl get pods
 # Forward the container port to a host
 kubectl port-forward project-microservices-udacity 5000:80
 
+# Step 5:
+# See the output of app running into pods
+kubectl logs project-microservices-udacity  
