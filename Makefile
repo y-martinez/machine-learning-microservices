@@ -28,4 +28,13 @@ lint:
 	# This should be run from inside a virtualenv
 	pylint --disable=R,C,W1203 app.py
 
+run_docker:
+	./utils/run_docker.sh
+
+upload_docker:
+	./utils/upload_docker.sh
+
+run_kubernetes:
+	./utils/run_kubernetes.sh
+
 all: install lint test
